@@ -1,0 +1,358 @@
+/* --- VARIABLES --- */
+:root {
+    --bg: #0a0a0a;
+    --card: #161616;
+    --accent: #00f2ff; /* Cyan */
+    --purple: #bc13fe; /* Purple */
+    --text: #ffffff;
+    --glass: rgba(255, 255, 255, 0.03);
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* --- NAVIGATION --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+}
+
+.nav-links { display: flex; gap: 20px; }
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 25px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    background: var(--glass);
+    border: 1px solid rgba(0, 242, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+    transition: 0.4s ease;
+}
+
+.nav-links a:hover {
+    background: rgba(0, 242, 255, 0.2);
+    transform: translateY(-3px) scale(1.05);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+}
+
+/* --- HERO SECTION --- */
+/* --- HERO SECTION --- */
+.hero { 
+    height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    padding: 120px 10% 0 10%; /* Added 120px to the top */
+    gap: 80px; 
+    overflow: hidden; 
+}
+
+.hero-text { 
+    flex: 1; 
+    z-index: 2;
+}
+
+h1 { 
+    font-size: 3.5rem; 
+    margin: 10px 0; 
+    line-height: 1.1; 
+}
+
+.accent-text { 
+    color: var(--accent); 
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.about-box { 
+    background: var(--glass); 
+    border-left: 3px solid var(--accent); 
+    padding: 20px; 
+    border-radius: 0 15px 15px 0; 
+    margin-bottom: 40px; 
+}
+
+/* --- HERO IMAGE (ENLARGED VERSION) --- */
+.hero-image { 
+    flex: 1.2;             /* Increased from 0.8 to take more width */
+    height: 600px;         /* Increased from 500px for more height */
+    background: #222 url('videos/4.jpg') center top / cover no-repeat; 
+    border-radius: 40px; 
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    
+    position: relative;
+    z-index: 1;            /* Ensures it stays behind the Nav Bar (z-index 1000) */
+}
+
+.hero-image:hover { 
+    transform: translateY(-15px) scale(1.03); 
+    box-shadow: 0 25px 60px rgba(0, 242, 255, 0.4); 
+    border: 1px solid var(--accent); 
+}
+
+/* --- STATUS TAG --- */
+.status-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(0, 242, 255, 0.1);
+    color: var(--accent);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 1100px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        height: auto;
+        padding: 150px 5% 50px;
+        gap: 30px;
+    }
+    
+    .hero-image {
+        width: 100%;
+        height: 400px;
+        flex: none;
+    }
+    
+    h1 { font-size: 2.5rem; }
+}
+
+.about-box { 
+    background: var(--glass); 
+    border-left: 3px solid var(--accent); 
+    padding: 20px; 
+    border-radius: 0 15px 15px 0; 
+    margin-bottom: 40px; 
+}
+
+/* --- SELECTED WORK SECTION (FIXED CENTER SHIFT) --- */
+.work-section {
+    padding: 100px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the Section Title */
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; 
+    width: 100%;
+    max-width: 1200px;
+    justify-content: center;
+}
+
+.portfolio-card { 
+    background: var(--card); 
+    border-radius: 25px; 
+    padding: 40px; 
+    border: 1px solid #222; 
+    text-align: center; 
+    transition: 0.4s; 
+}
+
+.portfolio-card:hover { transform: translateY(-15px) scale(1.05); border-color: var(--accent); }
+
+/* --- SKILLS --- */
+.skills-section { padding: 100px 10%; background: #0f0f0f; }
+.skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.skill-card { background: var(--card); padding: 25px; border-radius: 20px; border: 1px solid #222; }
+.skill-info { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: bold; }
+.progress-line { height: 8px; width: 100%; background: #333; border-radius: 10px; position: relative; }
+.progress-line span { height: 100%; position: absolute; border-radius: 10px; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+
+.photoshop { width: 75%; } .illustrator { width: 80%; } .indesign { width: 90%; }
+.ae { width: 88%; } .corel { width: 65%; } .audition { width: 70%; }
+
+/* --- GALLERY PAGES (TITLES & IMAGES) --- */
+.gallery-header {
+    padding: 160px 10% 40px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.neon-text-purple {
+    color: #fff;
+    text-shadow: 0 0 20px var(--purple), 0 0 40px rgba(188, 19, 254, 0.5);
+}
+
+.art-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    padding: 40px 10% 100px;
+}
+
+.art-item { 
+    background: var(--card); 
+    border-radius: 24px; 
+    overflow: hidden; 
+    border: 1px solid #222; 
+    transition: 0.4s; 
+    display: flex;
+    flex-direction: column;
+}
+
+.art-item:hover { transform: translateY(-10px); border-color: var(--accent); }
+
+/* --- GALLERY FIX (NATURAL SCALE) --- */
+.img-container {
+    height: auto;        /* Remove the forced 400px height */
+    width: 100%;
+    overflow: hidden;
+    background: none;    /* No more black background box */
+    display: block;      /* Changed from flex to block */
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;        /* Let the image stay in its original shape */
+    object-fit: contain; /* Shows the full image */
+    display: block;
+    border-radius: 20px 20px 0 0; /* Keeps the rounded corners on the top */
+}
+
+.art-item { 
+    background: var(--card); 
+    border-radius: 24px; 
+    overflow: hidden; 
+    border: 1px solid #222; 
+    transition: 0.4s; 
+    display: flex;
+    flex-direction: column;
+    /* Ensure the card doesn't get too long */
+    height: fit-content; 
+}
+
+/* --- VIDEO --- */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; 
+    background: #000;
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+.art-info { padding: 25px; }
+
+/* --- CONTACT SECTION (FIXED CENTER SHIFT) --- */
+.contact-section {
+    padding: 100px 10%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the button and text */
+}
+
+/* --- FOOTER & BUTTONS --- */
+.social-links { padding: 80px 0; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+
+.neon-link-purple {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 100px; 
+    border: 2px solid rgba(188, 19, 254, 0.5);
+    box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+}
+
+.neon-link-purple:hover {
+    transform: translateY(-10px) scale(1.1);
+    background: rgba(188, 19, 254, 0.2);
+    border-color: var(--purple);
+    box-shadow: 0 0 30px rgba(188, 19, 254, 0.6);
+}
+
+.btn { 
+    display: inline-block; 
+    padding: 15px 35px; 
+    background: var(--accent); 
+    color: black; 
+    border-radius: 15px; 
+    font-weight: bold; 
+    text-decoration: none; 
+    transition: 0.3s; 
+}
+
+.btn:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 242, 255, 0.3); }
+
+footer { padding: 60px 10%; text-align: center; border-top: 1px solid #222; background: #080808; opacity: 0.7; }
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 1100px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        height: auto;
+        padding-top: 150px;
+        padding-bottom: 50px;
+    }
+    .hero-image {
+        width: 100%;
+        height: 400px;
+        flex: none;
+    }
+    h1 { font-size: 2.5rem; }
+}
+/* This ONLY targets the Strawberry Jam video */
+#vertical-reel {
+    aspect-ratio: 9 / 16; /* Makes it tall like a Reel */
+}
+
+#vertical-reel video {
+    object-fit: cover;    /* Makes the video fill the whole tall box */
+    height: 100%;
+}
